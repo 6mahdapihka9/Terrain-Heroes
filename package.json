@@ -1,0 +1,15 @@
+{
+  "name": "lands",
+  "version": "1.0.0",
+  "description": "alfa version of a game Lands",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "lands",
+    "game"
+  ],
+  "author": "zul_jin_",
+  "license": "ISC"
+}
