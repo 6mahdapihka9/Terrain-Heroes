@@ -9,7 +9,7 @@ const registrationGet = (req, res) => {
             "css/padding.margin.border.styles.css",
             "css/structure.styles.css"],
         scripts: [],
-        title: "Registration",
+        title: "Sign up",
     });
 };
 
