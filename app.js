@@ -50,6 +50,6 @@ app.get("/rules(.html)?", rulesService);
 app.get("/info(.html)?", infoService);
 app.get("/", dashboardService);
 
-app.listen(port);
+app.listen(process.env.PORT || port);
 
 
