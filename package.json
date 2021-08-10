@@ -4,8 +4,7 @@
   "description": "alfa version of a game Lands",
   "main": "app.js",
   "scripts": {
-    "test": "node test",
-    "start": "node app"
+    "start": "node app.js"
   },
   "keywords": [
     "lands",
