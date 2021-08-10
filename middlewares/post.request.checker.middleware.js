@@ -10,7 +10,8 @@ const postReqChecker = (req, res, next)=>{
                 "css/structure.styles.css"],
             scripts: ["scripts/logout.js"],
             title: "Error",
-            user: req.cookies.session
+            session: req.cookies.session,
+            userName: req.cookies.userName
         });
     }
     next();

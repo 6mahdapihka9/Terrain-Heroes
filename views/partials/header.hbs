@@ -1,7 +1,10 @@
 <header>
     <h1>Terrain Heroes</h1>
     <div id="login_logout">
-        {{#if user}}
+        {{#if userName}}
+            <p>{{userName}}</p>
+        {{/if}}
+        {{#if session}}
             <a onclick="logoutUser()">Log out</a>
         {{else}}
             {{#if linksForLobbies}}

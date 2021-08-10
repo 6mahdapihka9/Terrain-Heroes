@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require('path');
 
-const checkUsersSession = (req, res, next)=>{
+const checkUsersSessionMiddleware = (req, res, next)=>{
     //почему вызывается не по порядку
 
     if (req.cookies && req.cookies.session){
@@ -21,4 +21,4 @@ const checkUsersSession = (req, res, next)=>{
     }
     next();
 }
-module.exports = checkUsersSession;
+module.exports = checkUsersSessionMiddleware;

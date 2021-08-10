@@ -24,6 +24,9 @@ ul{
 li{
     margin: 0 0 10px 0;
 }
+#login_logout, #leaveGameButton{
+    margin: 15px;
+}
 /*width and height*/
 html,body{
     height: 100%;

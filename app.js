@@ -13,14 +13,16 @@ const jsonParser = express.json();
 const cookieParser = require('cookie-parser');
 
 //middleware
-const urlChecker = require("./middlewares/url.checker.service");
-const postReqChecker = require("./middlewares/post.request.checker.service");
-const checkUsersSession = require("./middlewares/check.users.session");
-const {registrationGet, registrationPost} = require("./middlewares/registration.service");
-const {authorizationGet, authorizationPost} = require("./middlewares/authorization.service");
-const dashboardService = require("./middlewares/dashboard.service");
+const urlChecker = require("./middlewares/url.checker.middleware");
+const postReqChecker = require("./middlewares/post.request.checker.middleware");
+const checkUsersSession = require("./middlewares/check.users.session.middleware");
+const {registrationGet, registrationPost} = require("./services/registration.service");
+const {authorizationGet, authorizationPost} = require("./services/authorization.service");
+const infoService = require("./services/info.service");
+const rulesService = require("./services/rules.service");
+const dashboardService = require("./services/dashboard.service");
 //routing
-const gameRouter = require("./middlewares/routing/game.routes");
+const gameRouter = require("./routing/game.routes");
 
 //views
 const expressHbs = require("express-handlebars");
@@ -46,6 +48,8 @@ app.get("/registration(.html)?", urlencodedParser, registrationGet);
 app.post("/registration(.html)?", urlencodedParser, registrationPost);
 app.get("/authorization(.html)?", urlencodedParser, authorizationGet);
 app.post("/authorization(.html)?", urlencodedParser, authorizationPost);
+app.get("/rules(.html)?", rulesService);
+app.get("/info(.html)?", infoService);
 app.get("/", dashboardService);
 
 app.listen(port);

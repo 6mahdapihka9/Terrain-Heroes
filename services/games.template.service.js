@@ -1,8 +1,6 @@
-const gamesService = (req, res) => {
-    //TODO check is there any game with this id
-    // console.log("show game page");
+const gamesTemplateService = (req, res) => {
 
-    res.render("gameTemplate",{
+    res.render("gamesTemplate",{
         styles: ["css/colors.css",
             "css/main.styles.css",
             "css/padding.margin.border.styles.css",
@@ -11,8 +9,9 @@ const gamesService = (req, res) => {
         title: `Game #${req.params.id}`,
         dontShowPartials: true,
         dontShowNav: true,
-        user: req.cookies.session
+        session: req.cookies.session,
+        userName: req.cookies.userName
     });
 };
 
-module.exports = gamesService;
+module.exports = gamesTemplateService;

@@ -36,6 +36,7 @@ const authorizationPost = (req, res) => {
             <h1>Successful operation!</h1>
             <p>Redirecting to dashboard.</p>
             <script>
+                document.cookie = "userName=${user.name}; max-age=${60*60*24*7}";
                 document.cookie = "session=${user.session}; max-age=${60*60*24*7}";
                 setTimeout(()=>{window.location.href = "/"},1000);
             </script>
@@ -49,7 +50,7 @@ const authorizationPost = (req, res) => {
         <p>Try other data or register.</p>
         <script>
             document.cookie = "session=0; max-age=0";
-            setTimeout(()=>{window.open("/authorization")},3000);
+            setTimeout(()=>{window.location.href = "/authorization"},3000);
         </script>
         `);
     }

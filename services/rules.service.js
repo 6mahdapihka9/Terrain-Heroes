@@ -1,14 +1,15 @@
-const dashboardService = (req, res)=>{
+const rulesService = (req, res)=>{
 
-    res.render("dashboard",{
+    res.render("rules",{
         styles: ["css/colors.css",
             "css/main.styles.css",
             "css/padding.margin.border.styles.css",
             "css/structure.styles.css"],
         scripts: ["scripts/logout.js"],
         title: "Terrain Heroes",
-        user: req.cookies.session
+        session: req.cookies.session,
+        userName: req.cookies.userName
     });
 }
 
-module.exports = dashboardService;
+module.exports = rulesService;
