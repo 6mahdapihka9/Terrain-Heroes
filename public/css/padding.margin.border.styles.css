@@ -1,0 +1,47 @@
+/*margin and padding*/
+*{
+    padding: 0;
+    margin: 0;
+}
+header{
+    padding: 30px;
+}
+nav, main{
+    padding: 40px;
+}
+footer{
+    padding: 60px;
+}
+#title{
+    margin: 30px;
+}
+.content{
+    margin-bottom: 30px;
+}
+ul{
+    padding-left: 30px;
+}
+li{
+    margin: 0 0 10px 0;
+}
+#login_logout, #leaveGameButton{
+    margin: 15px;
+}
+/*width and height*/
+html,body{
+    height: 100%;
+}
+nav{
+    width: 15%;
+}
+main{
+    width: 80%;
+}
+
+/*border*/
+header{
+    border-bottom: 2px solid #b59e83;
+}
+nav{
+    border-right: 2px solid #B59E83;
+}

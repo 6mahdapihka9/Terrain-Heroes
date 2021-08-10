@@ -1,0 +1,27 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+#middle-block{
+    display: flex;
+    flex-direction: row;
+    flex: 1 0 auto;
+}
+header, main, nav, footer, #title {
+    display: flex;
+    flex-direction: column;
+}
+header, footer, #title{
+    align-items: center;
+}
+footer {
+    flex-shrink: 0;
+}
+header, main{
+    position: relative;
+}
+#login_logout,#leaveGameButton{
+    position: absolute;
+    top: 0;
+    right: 0;
+}

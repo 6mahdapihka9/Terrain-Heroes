@@ -1,73 +1,55 @@
 const express = require("express");
-const port = 3000;
 const app = express();
+const path = require('path');
 
+const port = 3000;
 
+//parser
 const bodyParser = require("body-parser");
 const urlencodedParser = bodyParser.urlencoded({extended: false});
+const jsonParser = express.json();
+const cookieParser = require('cookie-parser');
+
+//middleware
+const urlChecker = require("./middlewares/url.checker.middleware");
+const postReqChecker = require("./middlewares/post.request.checker.middleware");
+const checkUsersSession = require("./middlewares/check.users.session.middleware");
+const {registrationGet, registrationPost} = require("./services/registration.service");
+const {authorizationGet, authorizationPost} = require("./services/authorization.service");
+const infoService = require("./services/info.service");
+const rulesService = require("./services/rules.service");
+const dashboardService = require("./services/dashboard.service");
+//routing
+const gameRouter = require("./routing/game.routes");
+
+//views
+const expressHbs = require("express-handlebars");
+app.engine("hbs", expressHbs({
+    layoutsDir: "views/layouts",
+    defaultLayout: "layout",
+    extname: "hbs"
+}));
+
+const hbs = require("hbs");
+app.set("view engine","hbs");
+hbs.registerPartials(__dirname + "/views/partials");
 
 
-const gameRouter = express.Router();
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
+app.use(urlChecker);
+app.use(checkUsersSession);
+// app.use(postReqChecker);
 
-// определяем маршруты и их обработчики внутри роутера
-gameRouter.use("/lobbies(.html)?",(req, res)=>{
-     //TODO update lobbies page
-     console.log("show lobbies page");
-     res.sendFile(__dirname + "/source/lobbies/lobbies.html");
-});
-gameRouter.use("/:id", function(req, res){
-     //TODO check is there any game with this id
-
-     res.send(`Game #${req.params.id}`);
-});
-
-
-app.use((req, res, next)=>{
-     let u = req.url;
-     console.log(u.match("\\/game\\/.{3,6}"));
-     if (u === "/" || u === "/lobbies" || u === "/authorization" || u.match("\\/game\\/.{3,}"))
-          next();
-     else
-          res.redirect("/");
-});
-
-app.use((req, res, next)=>{
-     //TODO expand list of post request links
-
-     if (req.method === "POST" && req.url !== "/authorization") {
-          console.log("caught post request");
-          res.sendFile(__dirname + "/source/errors/main-error.html");
-          return;
-     }
-     next();
-});
-
-
-app.get("/authorization(.html)?", urlencodedParser, (req, res)=>{
-     //TODO update authorization page
-     console.log("show authorization page");
-     res.sendFile(__dirname + "/source/reg-auth/reg-auth.html");
-});
-
-app.post("/authorization(.html)?", urlencodedParser, (req,res)=>{
-     if(!req.body)
-          return res.sendStatus(400);
-     console.log("save authorization data");
-     console.log(req.body);
-     res.send("<h1>Successful operation!</h1>")
-});
-
-
-
-app.use("/game/", gameRouter);
-
-
-
-app.get("/",(req,res)=>{
-     //TODO update dashboard
-     console.log("show dashboard page");
-     res.sendFile(__dirname + "/source/dashboard/dashboard.html");
-});
-
+app.use("/games/", gameRouter);
+app.get("/registration(.html)?", urlencodedParser, registrationGet);
+app.post("/registration(.html)?", urlencodedParser, registrationPost);
+app.get("/authorization(.html)?", urlencodedParser, authorizationGet);
+app.post("/authorization(.html)?", urlencodedParser, authorizationPost);
+app.get("/rules(.html)?", rulesService);
+app.get("/info(.html)?", infoService);
+app.get("/", dashboardService);
 
 app.listen(port);
+
+
