@@ -1,0 +1,17 @@
+body{
+    font-family: "HelveticaNeue-Light",
+    "Helvetica Neue Light",
+    "Helvetica Neue",
+    HelveticaNeue,
+    Segoe UI,
+    Helvetica,
+    Arial,
+    sans-serif;
+}
+ul{
+    /*list-style: none;*/
+}
+a{
+    color: #337ab7;
+    text-decoration: none;
+}

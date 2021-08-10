@@ -1,0 +1,14 @@
+<header>
+    <h1>Terrain Heroes</h1>
+    <div id="login_logout">
+        {{#if user}}
+            <a onclick="logoutUser()">Log out</a>
+        {{else}}
+            {{#if linksForLobbies}}
+                <a href="../../registration">Register</a> | <a href="../../authorization">Log in</a>
+            {{else}}
+                <a href="registration">Register</a> | <a href="authorization">Log in</a>
+            {{/if}}
+        {{/if}}
+    </div>
+</header>

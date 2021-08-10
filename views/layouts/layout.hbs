@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    {{>scripts}}
+    {{>styles}}
+</head>
+<body>
+    {{#if dontShowPartials}}
+    {{else}}
+        {{>header}}
+    {{/if}}
+
+    <div id="middle-block">
+        {{#if dontShowPartials}}
+        {{else}}
+            {{>navigation}}
+        {{/if}}
+
+        {{{body}}}
+    </div>
+    {{#if dontShowPartials}}
+    {{else}}
+        {{> footer}}
+    {{/if}}
+</body>
+<html>

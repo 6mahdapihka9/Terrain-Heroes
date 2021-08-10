@@ -83,8 +83,8 @@
 // });
 //
 // app.get("/",(request, response)=>{
-//     console.log(__dirname + "/lobbies.html");
-//     response.send(__dirname + "/lobbies.html");
+//     console.log(__dirname + "/game-session.html");
+//     response.send(__dirname + "/game-session.html");
 // });
 //
 // app.get("/home",(request, response)=>{

@@ -4,12 +4,21 @@
   "description": "alfa version of a game Lands",
   "main": "app.js",
   "scripts": {
-    "test": "test"
+    "test": "node test",
+    "start": "node app"
   },
   "keywords": [
     "lands",
     "game"
   ],
   "author": "zul_jin_",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.3",
+    "hbs": "^4.1.2",
+    "request": "^2.88.2"
+  }
 }
