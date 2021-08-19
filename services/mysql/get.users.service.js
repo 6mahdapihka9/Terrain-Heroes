@@ -1,18 +1,6 @@
-const mysql = require("mysql2");
+const connection = require("./connection.service");
 
 const getUsers = () => {
-    const connection = mysql.createConnection((process.env.PORT) ? {
-        host: "eu-cdbr-west-01.cleardb.com",
-        user: "bedce05604ab0f",
-        database: "terrain_heroes",
-        password: "09dc02a8"
-    } : {
-        host: "localhost",
-        user: "root",
-        database: "terrain_heroes",
-        password: ""
-    });
-
     let query = "SELECT * FROM users";
 
     connection.query(query, function (err, results, fields) {
