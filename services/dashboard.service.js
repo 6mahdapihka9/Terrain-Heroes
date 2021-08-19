@@ -1,4 +1,4 @@
-const getUsers = require("services/get.users.service")
+const getUsers = require("./get.users.service")
 
 const dashboardService = (req, res)=>{
 
