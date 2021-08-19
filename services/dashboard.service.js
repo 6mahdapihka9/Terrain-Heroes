@@ -1,4 +1,10 @@
+const getUsers = require("./mysql/get.users.service");
+const addUsers = require("./mysql/add.user.service");
+
 const dashboardService = (req, res)=>{
+
+    addUsers();
+    getUsers();
 
     res.render("dashboard",{
         styles: ["css/colors.css",
