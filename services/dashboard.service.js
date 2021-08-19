@@ -1,4 +1,8 @@
+const getUsers = require("services/get.users.service")
+
 const dashboardService = (req, res)=>{
+
+    getUsers();
 
     res.render("dashboard",{
         styles: ["css/colors.css",

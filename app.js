@@ -4,16 +4,6 @@ const path = require('path');
 
 const port = 3000;
 
-//mysql
-const mysql = require("mysql2");
-
-const connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    database: "terrain_heroes",
-    password: ""
-});
-
 //parser
 const bodyParser = require("body-parser");
 const urlencodedParser = bodyParser.urlencoded({extended: false});
